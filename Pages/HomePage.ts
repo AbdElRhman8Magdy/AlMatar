@@ -4,9 +4,9 @@ import Config   from '../playwright.config'
 import { config } from "process";
 
 export default class HomePage{
-    getByRole(arg0: string, arg1: { name: string; }) {
-        throw new Error("Method not implemented.");
-    }
+    // getByRole(arg0: string, arg1: { name: string; }) {
+    //     throw new Error("Method not implemented.");
+    // }
     private page:Page;
     private request?:APIRequestContext;
     private context?:BrowserContext;
@@ -20,13 +20,13 @@ export default class HomePage{
     
     
     private get HomeHeader(){
-        return this.page.getByText('Your travel mate')
+        return this.page.getByText('المطار، صديقك في السفر')
     }
     private get HotelsSelected(){
-        return this.page.getByRole('tab', { name: 'hotels', exact: true })
+        return this.page.getByRole('tab', { name: ' فنادق ', exact: true })
     }
      private get DestinationHotelInput(){
-        return this.page.getByRole('combobox', { name: 'Destination or Hotel' })
+        return this.page.getByRole('combobox', { name: 'الوجهة أو الفندق' })
     }
     //  private get DestinationSelect(){
     //     return this.page.locator('div').filter({ hasText:"Spain"}).nth(1)
@@ -34,8 +34,8 @@ export default class HomePage{
     private get DestinationSelect(){
         return this.page.getByRole('option', { name: 'Catalonia Port Barcelona, Spain' })
     }
-     private get CheckIn(){
-        return this.page.locator('.almatar-calendar__head').filter({ hasText : 'Check in' })
+     private get CheckInDates(){
+        return this.page.getByText('موعد الوصول')
     }
     private get NextMonthBTN(){
         return this.page.getByLabel('hotels', { exact: true }).getByRole('button').filter({ hasText: /^$/ }).nth(1)
@@ -46,17 +46,28 @@ export default class HomePage{
     private get OutDate(){
         return this.page.getByText('17', { exact: true }).nth(1)
     }
-  
+    private get GuestRoomSelect(){
+        return this.page.locator('.search__passengers-dropdown')
+    }
+    // private get AdultIncr(){
+    //     return this.page.getByText('Adult').locator('[class="increase passenger-control__item"]')
+    // }
+  private get AdultIncr(){
+        return this.page.locator(`[name="searchHotels"]`).locator(`[name="plus"]`).first()
+    }
 
     async load(){
-        await this.page.goto("https://almatar.com/en/")   
+        await this.page.goto('ar/')   
     }
     async HomeLoad(){
-        await expect(this.HomeHeader).toContainText('Your travel mate')
-        await expect(this.HotelsSelected).toContainText('hotels')
-        await this.HotelsSelected.click()
-        await this.DestinationHotelInput.fill('Barcelona, Catalonia, Spai')
-        await this.DestinationSelect.click()
+        await expect(this.HomeHeader).toContainText('المطار، صديقك في السفر')
+        await expect(this.HotelsSelected).toContainText('فنادق')
+        await this.DestinationHotelInput.click()
+        await this.DestinationHotelInput.clear()
+        await this.DestinationHotelInput.type('Barcelona, Catalonia, Spain')
+        await this.page.waitForTimeout(5000)
+        await this.page.keyboard.press('Enter');
+        // await this.DestinationSelect.click()
         // await this.page.waitForTimeout(5000) // Wait for 1 second after clicking DestinationSelect
       
 
@@ -64,7 +75,7 @@ export default class HomePage{
    }
    async HotelsDates(){
        
-    await this.CheckIn.click()
+    await this.CheckInDates.click()
     await this.NextMonthBTN.click()
       await this.InDate.click()
         await this.OutDate.click()
@@ -76,6 +87,12 @@ export default class HomePage{
     // await this.page.getByText('27 May,').click()
           
     }
+
+    async Guest(){
+        await this.GuestRoomSelect.click() 
+        await this.AdultIncr.click()
+    }
+
 
    
 }

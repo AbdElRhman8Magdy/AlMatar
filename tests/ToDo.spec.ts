@@ -17,6 +17,7 @@ test("ALMatar Home",async({page,request,context})=>{
 
  await homePage.HomeLoad(); 
  await homePage.HotelsDates();
+ await homePage.Guest();
  
      })
 })
