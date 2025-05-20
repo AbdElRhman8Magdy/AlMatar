@@ -12,12 +12,20 @@ test.describe('ALMatar', () => {
     })
 
   
-test("ALMatar Home",async({page,request,context})=>{
+test("ALMatar Home - hotels",async({page,request,context})=>{
     const homePage = new HomePage(page,request,context); 
 
  await homePage.HomeLoad(); 
  await homePage.HotelsDates();
  await homePage.Guest();
+ 
+     })
+test("ALMatar - Flight",async({page,request,context})=>{
+    const homePage = new HomePage(page,request,context); 
+
+ await homePage.HomeLoad(); 
+ await homePage.FlightSeclection();
+ 
  
      })
 })

@@ -64,6 +64,37 @@ export default class HomePage{
     private get ConfirmSearchBTN(){
         return this.page.getByRole('button', { name: 'ابحث عن الفنادق' })
     }
+    private get FlightSection(){
+        return this.page.getByRole('tab', { name: 'طيران' })
+    }
+    private get FlightFrom(){
+        return this.page.getByRole('combobox', { name: 'مدينة المغادرة' })
+    }
+    private get FlightTo(){
+        return this.page.getByRole('combobox', { name: 'الوجهة' })
+    }
+    private get FlightToggle(){
+        return this.page.locator('.almatar-flight-search__toggle')
+    }
+    private get FlightDate(){
+        return this.page.getByText('تاريخ المغادرة')
+    }
+    private get FlightNextMonth(){
+        return this.page.getByLabel('طيران').getByRole('button').filter({ hasText: /^$/ }).nth(1)
+    }
+    private get FlighClassSelect(){
+        return this.page.locator('span').filter({ hasText: 'الدرجة السياحية' }).first()
+    }
+    private get FlightfrSTClass(){
+        return this.page.getByText('الدرجة الأولى')
+    }
+    private get FlightBackGround(){
+        return this.page.locator('form[name="flightsSearch"]')
+    }
+    private get ConfirmSearchFlightBTN(){
+        return this.page.getByRole('button', { name: 'بحث عن رحلات' })
+    }
+
 
     async load(){
         await this.page.goto('ar/')   
@@ -106,6 +137,34 @@ export default class HomePage{
         await this.ConfirmSearchBTN.click({ force: true })
         await this.ConfirmSearchBTN.click({ force: true })
 
+    }
+    async FlightSeclection(){
+        await this.FlightSection.click()
+        await this.FlightFrom.click()
+        await this.FlightFrom.clear()
+        await this.FlightFrom.type('Spain')
+        await this.page.waitForTimeout(2000)
+        await this.page.keyboard.press('Enter');
+        await this.FlightTo.click()
+        await this.FlightTo.clear() 
+        await this.FlightTo.type('Riyadh')
+        await this.page.waitForTimeout(2000)
+        await this.page.keyboard.press('Enter');
+        await this.FlightDate.click()
+        await this.FlightNextMonth.click()
+        await this.InDate.click()
+        await this.OutDate.click()
+        await this.FlightToggle.click()
+        await this.page.waitForTimeout(2000)
+        await this.FlighClassSelect.click()
+        await this.FlightfrSTClass.click()
+        await this.FlightBackGround.click({ position: { x: 0, y: 0 } })
+      
+
+        // await this.page.waitForTimeout(2000)
+        await this.ConfirmSearchFlightBTN.click({ force: true })
+        await this.ConfirmSearchFlightBTN.click({ force: true })
+      
     }
 
 
