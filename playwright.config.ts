@@ -34,17 +34,31 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     baseURL:"https://almatar.com/",
+    
+ // Context geolocation
+    geolocation: { longitude: 45.081139, latitude: 23.886292 },
+    //Latitude: 23.886292 | Longitude: 45.081139
+    permissions: ['geolocation'],
+    // Emulates the browser locale.
+    locale: 'sa-SA',
+    // Emulates the browser language.
 
+    // Emulates the browser timezone.
+    timezoneId: 'Asia/Riyadh',
+    // Emulates the browser timezone.
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+  
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],
+        viewport: { width: 1280, height: 720 }
+       },
     },
 
     {
