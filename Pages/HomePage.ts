@@ -115,17 +115,12 @@ export default class HomePage{
    }
    async HotelsDates(){
        
-    await this.CheckInDates.click()
-    await this.NextMonthBTN.click()
-      await this.InDate.click()
+        await this.CheckInDates.click()
+        await this.NextMonthBTN.click()
+        await this.InDate.click()
         await this.OutDate.click()
     
-    // await this.page.getByText('22').nth(2).click();
-    // await this.page.getByText('29').nth(2).click();
-//     await this.page.getByText('1', { exact: true }).nth(2).click();
-//   await this.page.getByText('9', { exact: true }).nth(1).click();
-    // await this.page.getByText('27 May,').click()
-          
+
     }
 
     async Guest(){
