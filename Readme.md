@@ -1,6 +1,6 @@
-# E2E Playwright Automation - Saucedemo
+# AlMatar Playwright Automation 
 
-This project demonstrates an end-to-end test automation framework built using **Playwright with TypeScript** for [AlMatar](https://www.Almatar.com), focusing on a complete purchase flow.
+This project demonstrates an end-to-end test automation framework built using **Playwright with TypeScript** for [AlMatar](https://www.Almatar.com), focusing on a complete Search flow.
 
 ---
 
