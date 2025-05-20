@@ -131,6 +131,8 @@ export default class HomePage{
         await this.BackGround.click({ position: { x: 0, y: 0 } })
         await this.ConfirmSearchBTN.click({ force: true })
         await this.ConfirmSearchBTN.click({ force: true })
+        await this.page.waitForTimeout(5000)
+
 
     }
     async FlightSeclection(){
@@ -158,7 +160,11 @@ export default class HomePage{
 
         // await this.page.waitForTimeout(2000)
         await this.ConfirmSearchFlightBTN.click({ force: true })
-        await this.ConfirmSearchFlightBTN.click({ force: true })
+
+        // await this.page.waitForTimeout(2000)
+        await this.page.waitForTimeout(5000)
+        await this.page.waitForTimeout(5000)
+
       
     }
 
