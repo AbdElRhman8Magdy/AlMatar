@@ -11,7 +11,6 @@ export default class HomePage {
     this.context = context;
   }
 
-
   private get HomeHeader() {
     return this.page.getByText('المطار، صديقك في السفر');
   }
@@ -104,7 +103,6 @@ export default class HomePage {
     return this.page.getByRole('button', { name: 'بحث عن رحلات' });
   }
 
-
   async load() {
     await this.page.goto('ar/');
   }
@@ -154,7 +152,5 @@ export default class HomePage {
     await this.ConfirmSearchFlightBTN.click({ force: true });
     await this.page.waitForLoadState('networkidle');
   }
-
-
    
 }
