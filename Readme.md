@@ -25,7 +25,7 @@ This project demonstrates an end-to-end test automation framework built using **
 2.**Open the test report after run:**
     npx playwright show-report
 3.**Run a specific test file:**
-    npx playwright test tests/ToDo.spec.spec.ts
+    npx playwright test tests/ToDo.spec.ts
 4.**Run tests in a specific browser:**
     npx playwright test --project=chromium
 5. **Tagging**

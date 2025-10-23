@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
 
- timeout:  600 * 100, 
+  timeout:  600 * 100, 
   expect:{
     timeout:   60 * 100
   },
@@ -33,9 +33,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL:"https://almatar.com/",
+    baseURL:'https://almatar.com/',
     
- // Context geolocation
+    // Context geolocation
     geolocation: { longitude: 45.081139, latitude: 23.886292 },
     //Latitude: 23.886292 | Longitude: 45.081139
     permissions: ['geolocation'],
@@ -48,9 +48,8 @@ export default defineConfig({
     // Emulates the browser timezone.
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
-  
 
   /* Configure projects for major browsers */
   projects: [
@@ -58,18 +57,18 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
         viewport: { width: 1280, height: 720 }
-       },
+      }
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'] }
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      use: { ...devices['Desktop Safari'] }
+    }
 
     /* Test against mobile viewports. */
     // {
@@ -90,7 +89,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  ]
 
   /* Run your local dev server before starting the tests */
   // webServer: {
